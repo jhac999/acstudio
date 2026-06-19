@@ -1,0 +1,707 @@
+:root {
+    /* 褰濇棌涓夎壊鏍稿績绯荤粺 */
+    --base-black: #080606;       /* 鏋佹繁鐨勫簳鑹� */
+    --ritual-red: #73181E;      /* 鏆楃孩鍩哄簳 */
+    --ritual-red-dark: #4a0d11; /* 鏇存繁鐨勬殫绾�紙鐢ㄤ簬闃村奖鎴栧帤閲嶆劅锛� */
+    --spirit-gold: #F9C80E;     /* 閲戠洀榛勶細鐏�劙涓庣簿绁炶兘閲� */
+    --spirit-gold-dim: rgba(249, 200, 14, 0.2);
+    
+    /* 杈呭姪鑹� */
+    --text-primary: #f2e8dc;    /* 寰�厜鐧� */
+    --text-secondary: #a69888;  /* 鐏扮櫧娌夋穩 */
+    --aux-green: #2b4c3b;       /* 鏋佹殫鐨勭豢锛堝彲閫夌偣缂€锛� */
+    
+    --font-heading: 'Noto Serif SC', 'Georgia', serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--base-black);
+    /* 缁嗗井鐨勬繁鑹插櫔鐐圭汗鐞嗭紝妯℃嫙绮楃硻鐭虫澘鎴栨矇娣€鎰� */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+/* Page Container */
+.page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(8, 6, 6, 0.9);
+    min-height: 100vh;
+    box-shadow: 0 0 100px rgba(115, 24, 30, 0.15); /* 搴曢儴閫忓嚭鐨勫井绾㈢幆澧冨厜 */
+}
+
+/* Header (The Hearth/Altar) */
+.hero-section {
+    position: relative;
+    height: 400px;
+    background-image: url('header_bg.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    border-bottom: 4px solid var(--ritual-red);
+    box-shadow: 0 4px 30px var(--ritual-red-dark);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* 浠庝笂鍒颁笅鐨勬繁娓婇粦鍒版殫绾㈢殑寰�笎鍙� */
+    background: linear-gradient(to bottom, rgba(8,6,6,0.8) 0%, rgba(115,24,30,0.4) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.vinyl-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--ritual-red);
+    background: rgba(8,6,6,0.6);
+    color: var(--spirit-gold);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.brand-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.2;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+    text-shadow: 0 0 40px rgba(249, 200, 14, 0.4);
+    word-break: keep-all;
+}
+
+.hero-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    letter-spacing: 1px;
+}
+
+.hero-desc b {
+    color: var(--spirit-gold);
+    font-weight: normal;
+}
+
+/* Form Container */
+.form-container {
+    padding: 4rem 4rem;
+}
+
+/* The Line of Fire (Dividers) */
+.vintage-divider {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ritual-red-dark), var(--ritual-red), var(--spirit-gold), var(--ritual-red), var(--ritual-red-dark), transparent);
+    margin: 4rem 0;
+    opacity: 0.7;
+}
+
+/* Sections */
+.form-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    letter-spacing: 2px;
+}
+
+.section-num {
+    font-size: 1.8rem;
+    color: var(--ritual-red);
+    font-weight: 900;
+}
+
+.section-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Inputs (Ritual Marks) */
+.input-row {
+    display: flex;
+    gap: 3rem;
+}
+
+.input-group {
+    flex: 1;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.input-group input[type="text"],
+.input-group input[type="date"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--ritual-red-dark);
+    padding: 8px 0;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--spirit-gold);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* 鑱氶泦鏃剁殑鐏厜鏁堝簲 */
+.input-group input:focus {
+    box-shadow: 0 5px 15px rgba(249, 200, 14, 0.15);
+    border-bottom-color: var(--spirit-gold);
+    transform: translateY(-2px);
+}
+
+.input-group input::placeholder {
+    color: rgba(166, 152, 136, 0.3);
+}
+
+.mt-lg { margin-top: 2rem; }
+.mt-sm { margin-top: 1rem; }
+
+/* Radio Cards (Monumental Blocks) */
+.radio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.radio-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-card input {
+    display: none;
+}
+
+.card-content {
+    background-color: rgba(115, 24, 30, 0.05);
+    border: 1px solid var(--ritual-red-dark);
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 鎮仠寰急鐨勭幆澧冪伀鍏 */
+.radio-card:hover .card-content {
+    border-color: var(--ritual-red);
+    background-color: rgba(115, 24, 30, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(8, 6, 6, 0.9), 0 0 15px rgba(115, 24, 30, 0.3);
+}
+
+/* 閫変腑鏃惰扛鍙戦噾榛勮兘閲 */
+.radio-card input:checked + .card-content {
+    border-color: var(--spirit-gold);
+    background-color: rgba(249, 200, 14, 0.05);
+    box-shadow: 0 0 20px var(--spirit-gold-dim), inset 0 0 10px var(--spirit-gold-dim);
+    transform: translateY(-5px);
+}
+
+.card-content .price {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: var(--spirit-gold);
+    letter-spacing: 1px;
+}
+
+.card-content .desc {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.stamp-check {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: 1px solid var(--ritual-red);
+    transition: all 0.4s ease;
+}
+
+/* 閫変腑鏍囪鍙樹负鐕冪儳鐨勬柟鍧 */
+.radio-card input:checked + .card-content .stamp-check {
+    background-color: var(--spirit-gold);
+    border-color: var(--spirit-gold);
+    box-shadow: 0 0 10px var(--spirit-gold);
+    transform: rotate(45deg);
+}
+
+/* Pills (Ritual Tokens) */
+.field-group {
+    margin-bottom: 3rem;
+}
+
+.field-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.pills-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pill input {
+    display: none;
+}
+
+.pill span {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: var(--base-black);
+    border: 1px solid var(--ritual-red-dark);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.pill:hover span {
+    border-color: var(--ritual-red);
+    color: var(--text-primary);
+}
+
+/* 閫変腑鐘舵€侊細娣辩孩鑳屾櫙+閲戦粍杈规+閲戦粍瀛椾綋 */
+.pill input:checked + span {
+    background-color: var(--ritual-red-dark);
+    border-color: var(--spirit-gold);
+    color: var(--spirit-gold);
+    box-shadow: 0 0 15px var(--spirit-gold-dim);
+}
+
+.other-input {
+    width: 100%;
+    max-width: 400px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--ritual-red-dark);
+    padding: 8px 0;
+    font-family: var(--font-body);
+    color: var(--spirit-gold);
+    outline: none;
+    transition: all 0.3s;
+}
+
+.other-input:focus {
+    border-bottom-color: var(--spirit-gold);
+}
+
+/* Textareas (The Scrolls) */
+.field-hint {
+    font-size: 0.85rem;
+    color: var(--ritual-red);
+    margin-bottom: 1rem;
+}
+
+textarea {
+    width: 100%;
+    background: rgba(115, 24, 30, 0.03);
+    border: 1px solid var(--ritual-red-dark);
+    padding: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--spirit-gold);
+    resize: vertical;
+    outline: none;
+    transition: all 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--spirit-gold);
+    background: rgba(249, 200, 14, 0.02);
+    box-shadow: 0 5px 20px rgba(249, 200, 14, 0.1);
+    transform: translateY(-2px);
+}
+
+textarea::placeholder {
+    color: rgba(166, 152, 136, 0.3);
+}
+
+/* Terms (The Edicts) */
+.terms-box {
+    border: 1px solid var(--ritual-red);
+    padding: 3rem;
+    margin-top: 4rem;
+    background-color: rgba(115, 24, 30, 0.05);
+    position: relative;
+}
+
+.terms-title {
+    position: absolute;
+    top: -15px;
+    left: 40px;
+    background-color: var(--base-black);
+    padding: 0 20px;
+    font-family: var(--font-heading);
+    color: var(--spirit-gold);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.terms-box ol {
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.terms-box li {
+    margin-bottom: 0.8rem;
+}
+
+.terms-box strong {
+    color: var(--text-primary);
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 4rem;
+    border-top: 1px solid var(--ritual-red-dark);
+    font-family: var(--font-heading);
+}
+
+.site-footer p:first-child {
+    color: var(--spirit-gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.footer-sub {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: var(--ritual-red);
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 2rem 1.5rem;
+    }
+    .input-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .radio-cards {
+        grid-template-columns: 1fr;
+    }
+    .hero-desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+    .about-title {
+        font-size: 1.8rem;
+    }
+    .about-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Submit Button */
+.ritual-btn {
+    position: relative;
+    background-color: var(--ritual-red-dark);
+    border: 1px solid var(--ritual-red);
+    color: var(--spirit-gold);
+    padding: 1.2rem 4rem;
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    letter-spacing: 4px;
+    box-shadow: 0 0 15px rgba(115, 24, 30, 0.4);
+}
+
+.ritual-btn:hover {
+    border-color: var(--spirit-gold);
+    background-color: var(--ritual-red);
+    box-shadow: 0 0 30px var(--spirit-gold-dim), inset 0 0 15px var(--spirit-gold-dim);
+    transform: translateY(-2px);
+}
+
+.ritual-btn:active {
+    transform: translateY(1px);
+}
+
+.ritual-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    box-shadow: none;
+}
+
+.btn-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: var(--spirit-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+}
+
+.ritual-btn:hover .btn-glow {
+    width: 200px;
+    height: 200px;
+    opacity: 0.1;
+}
+
+
+/* ======== 公域样式扩展 ======== */
+
+/* 渐显微动画类 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-section {
+    text-align: center;
+    padding: 4rem 0 0 0;
+}
+
+.about-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--spirit-gold);
+    margin-bottom: 2rem;
+    letter-spacing: 4px;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    text-align: left;
+    text-indent: 2.2rem;
+    line-height: 2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ======== 补充的动态高级特效 ======== */
+
+/* 页面加载时自动渐隐上升 */
+@keyframes loadFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.load-fade-up {
+    animation: loadFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.load-fade-up-delay {
+    opacity: 0;
+    animation: loadFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+/* 呼吸背景特效 */
+@keyframes slowBreathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.hero-bg {
+    animation: slowBreathe 20s infinite ease-in-out;
+}
+
+/* 输入框聚焦特效 */
+.input-group input:focus {
+    box-shadow: 0 5px 15px rgba(249, 200, 14, 0.15);
+    border-bottom-color: var(--spirit-gold);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+.input-group input {
+    transition: all 0.3s ease;
+}
+
+/* 服务卡片悬停上浮与发光特效 */
+.radio-card:hover .card-content {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(8, 6, 6, 0.9), 0 0 15px rgba(115, 24, 30, 0.3);
+}
+
+.radio-card input:checked + .card-content {
+    transform: translateY(-5px);
+}
+
+/* 文本框聚焦特效 */
+textarea:focus {
+    box-shadow: 0 5px 20px rgba(249, 200, 14, 0.1);
+    transform: translateY(-2px);
+}
+
+/* 音乐播放器 (Cool R&B Vibe) */
+.music-player {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(8, 6, 6, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--spirit-gold-dim);
+    border-radius: 50px;
+    padding: 10px 20px 10px 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(115, 24, 30, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.music-player:hover {
+    transform: translateY(-5px);
+    border-color: var(--spirit-gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.9), 0 0 30px rgba(249, 200, 14, 0.3);
+}
+
+.cd-container {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.cd {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #111, #333, #111, #333, #111);
+    border: 2px solid #222;
+    animation: spin 4s linear infinite;
+    animation-play-state: paused;
+}
+
+.cd.playing {
+    animation-play-state: running;
+}
+
+.cd-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--ritual-red);
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.track-name {
+    font-size: 0.8rem;
+    color: var(--spirit-gold);
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.play-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    padding: 5px;
+}
+
+.play-btn:hover {
+    color: var(--spirit-gold);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .music-player {
+        bottom: 20px;
+        right: 20px;
+        padding: 8px 15px 8px 8px;
+    }
+    .track-name {
+        display: none;
+    }
+}
